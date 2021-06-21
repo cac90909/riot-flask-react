@@ -4,12 +4,12 @@ import { Game } from './components/Game'
 import axios from 'axios'
 
 var req_metrics = {
-  
+  current_req_number : 0,
+  RIOT_REQ_MAX_ONE_SECOND : 20,
+  RIOT_REQ_MAX_TWO_MINUTES : 100
 }
 
-var current_req_number = 0
-var RIOT_REQ_MAX_ONE_SECOND = 20
-var RIOT_REQ_MAX_TWO_MINUTES = 100
+
 
 
 function App() {
