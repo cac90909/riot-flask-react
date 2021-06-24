@@ -13,8 +13,8 @@ def get_relev_timeline_info(timeline): #Called inside of 'get_relev_info(x,y)'
                           'totalGold', 'level', 'xp', 'minionsKilled', 'jungleMinionsKilled']
             
             temp_dict = {x: frame['participantFrames'][participant][x] for x in relev_keys if x in frame['participantFrames'][participant]}
-            packaged_temp_dict = {participant:temp_dict}
-            temp_list.append(packaged_temp_dict)
+            #packaged_temp_dict = {participant:temp_dict} --> indefinetly removed because creates overcomplexity on the react side of data unpackaging
+            temp_list.append(temp_dict)
         a_dict[frame['timestamp']] = temp_list    
         
     return a_dict

@@ -31,6 +31,8 @@ function App() {
     return <div className="App">Loading...</div>;
   }
 
+  console.log("data object in App.js", data)
+
   return (
     <div className="App">
       <Game game_data={data}/>

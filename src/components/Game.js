@@ -1,33 +1,35 @@
 import React from 'react';
+import {Visual} from './Visual'
 
-/*https://codewithnico.com/react-wait-axios-to-render/ is a very good link to follow if the async stuff is being weird*/
 
 function Game({game_data}) {
     console.log("Game.js is rendering")
-    console.log("game_data object  in Game.js: ", game_data)
+    console.log("game_data object in Game.js: ", game_data)
     
     var timestamp_data = game_data.Timestamps[0]
 
-    for (var player in timestamp_data){
-        for (var extra_layer in timestamp_data[player]){
-            let player_pos_info = timestamp_data[player][extra_layer].position
-            console.log(player_pos_info)
-        }
+    var example_pos_data = []
+    
+    for (var player in timestamp_data){ //to make this to scale and not just be looking at the same timestamp, the structure I want to adopt would entail creating a for loop to iterate over every timestamp.
+                                        //then, i would use a map on every individual timestamp object (timestamps are stored in an array im pretty sure). Inside of the map, I would access each timestamp's
+                                        //player positioning attributes. Then I would append those attributes to the created map (remember, map returns an array). The returned map array would represent each player's positioning
+                                        //data for the given timeframe. I would loop over every timeframe and append each iteration's positioning map to a storage array or object.
+        let player_pos_info = timestamp_data[player].position
+        //console.log('Player',extra_layer,': ', player_pos_info)
+        example_pos_data.push(player_pos_info)
+        
     }
+
+    console.log(example_pos_data)
 
 
     return <div>
         <p>hi</p>
         <p>hi again</p>
+        <Visual pos_data={example_pos_data}/>   
         </div>
 }
 
 export {Game}
 
-
-/*As of now, I know how to access the data I want. Now, I am going to use that data to display some basic plots. I am planning on using the d3.js library for these visualizations.
-Check out these 3 videos for examples on how to use the library:
-https://www.youtube.com/watch?v=aHJCt2adSWA&ab_channel=Academind
-https://www.youtube.com/watch?v=zXBdNDnqV2Q&ab_channel=ReactConferencesbyGitNation
-https://www.youtube.com/watch?v=AhD-oziq53w&ab_channel=LivelyLab */
 
