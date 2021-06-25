@@ -1,33 +1,58 @@
-import React from 'react';
-import {Visual} from './Visual'
+import React, {useState, useEffect} from 'react';
+import {FrameGraph} from './FrameGraph'
 
 
 function Game({game_data}) {
     console.log("Game.js is rendering")
-    console.log("game_data object in Game.js: ", game_data)
-    
-    var timestamp_data = game_data.Timestamps[0]
 
-    var example_pos_data = []
-    
-    for (var player in timestamp_data){ //to make this to scale and not just be looking at the same timestamp, the structure I want to adopt would entail creating a for loop to iterate over every timestamp.
-                                        //then, i would use a map on every individual timestamp object (timestamps are stored in an array im pretty sure). Inside of the map, I would access each timestamp's
-                                        //player positioning attributes. Then I would append those attributes to the created map (remember, map returns an array). The returned map array would represent each player's positioning
-                                        //data for the given timeframe. I would loop over every timeframe and append each iteration's positioning map to a storage array or object.
-        let player_pos_info = timestamp_data[player].position
-        //console.log('Player',extra_layer,': ', player_pos_info)
-        example_pos_data.push(player_pos_info)
-        
+
+    const game_data_timestamps_keys = Object.keys(game_data.Timestamps)
+    var key = game_data_timestamps_keys[0] 
+
+    const [frame_list, changeFrameList] = useState(game_data_timestamps_keys)
+    const [frame, changeFrame] = useState(key)
+
+
+    function nextKey(){
+        let currentIndex = frame_list.indexOf(frame)
+        if (currentIndex === frame_list.length) {
+            console.log("Going above array length. Can't do that")}
+       else {
+            let nextIndex = frame_list[currentIndex+1]
+            console.log("Setting index to nextIndex:", nextIndex)
+            changeFrame(nextIndex)
+       }
     }
 
-    console.log(example_pos_data)
+    function previousKey(){
+        let currentIndex = frame_list.indexOf(frame)
+        if (currentIndex === 0) {
+            console.log("Going below array length. Cant do that")}
+        else{
+            let previousIndex = frame_list[currentIndex-1]
+            console.log("Setting index to previousIndex:", previousIndex)
+            changeFrame(previousIndex)
+        }
+    }
+
+    var timestamp_data = game_data.Timestamps[frame]
+    var frame_pos_data = []
+    
+    for (var player in timestamp_data){ 
+        let player_pos_info = timestamp_data[player].position
+        frame_pos_data.push(player_pos_info)        
+    }
 
 
-    return <div>
-        <p>hi</p>
-        <p>hi again</p>
-        <Visual pos_data={example_pos_data}/>   
+
+    return(
+        <div>
+            <p>Title</p>
+            <FrameGraph frame_pos_data={frame_pos_data}/>
+            <button id='prevFrame' onClick={() => previousKey()} style={{marginRight : 10}}>&lt;-- Frame</button>
+            <button id='nextFrame' onClick={() => nextKey() } style={{marginLeft : 10}}>Frame --&gt;</button>
         </div>
+    )
 }
 
 export {Game}

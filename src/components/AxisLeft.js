@@ -12,14 +12,14 @@ function AxisLeft({ yScale, width}) {
                 x1={0}
                 x2={width}
             />
-            <text
+            {/*<text
                 style= {{fontSize: 12}}
                 x={textPadding}
                 dy=".32em"
                 y={yScale(d)}
             >
             {d}
-            </text>
+            </text>*/}
         </g>
     ))
     return <>{axis}</>

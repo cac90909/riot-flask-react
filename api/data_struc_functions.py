@@ -15,21 +15,19 @@ def get_relev_timeline_info(timeline): #Called inside of 'get_relev_info(x,y)'
             temp_dict = {x: frame['participantFrames'][participant][x] for x in relev_keys if x in frame['participantFrames'][participant]}
             #packaged_temp_dict = {participant:temp_dict} --> indefinetly removed because creates overcomplexity on the react side of data unpackaging
             temp_list.append(temp_dict)
-        a_dict[frame['timestamp']] = temp_list    
-        
+        a_dict[frame['timestamp']] = temp_list
+       
     return a_dict
 
 def get_relev_event_info(timeline): #Called inside of 'get_relev_info(x,y)'
     
-    a_dict = collections.defaultdict(list)
-    i = 0
+    #a_dict = collections.defaultdict(list) --> changed to be a list. Doesn't make much sense to have a dictionary where the keys are essentially list indices
+    a_list = []
     for frame in timeline:
         for event in frame['events']:
-            a_dict[i] = event
-            i = i + 1
+            a_list.append(event)
             
-    return a_dict
-            
+    return a_list
            
 def get_relev_summary_info(match_detail): #Called inside of 'get_relev_info(x,y)'
     

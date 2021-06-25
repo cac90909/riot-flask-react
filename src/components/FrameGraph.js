@@ -3,10 +3,12 @@ import * as d3 from 'd3'
 import './Visual.css'
 import {AxisBottom} from "./AxisBottom"
 import {AxisLeft} from "./AxisLeft"
+import {Circles} from "./Circles"
+import {CirclesText} from "./CirclesText"
 
-function Visual({pos_data}){
+function FrameGraph({frame_pos_data}){
     console.log("Visual.js is rendering")
-    console.log("pos_data object in Visual.js", pos_data)
+    console.log("frame_pos_data object in Visual.js", frame_pos_data)
 
     const w = 512
     const h = 512
@@ -15,41 +17,28 @@ function Visual({pos_data}){
     const width = w - margin.left - margin.right
     const height = h - margin.top - margin.bottom
 
-    //console.log("x values in Visual.js", pos_data_x)
-    //console.log("y values in Visual.js", pos_data_y)
-
     const xScale = d3.scaleLinear()
-        .domain(d3.extent(pos_data, d => d.x))
+        .domain([0, 15000]) 
         .range([0, width])
     
     const yScale = d3.scaleLinear()
-        .domain(d3.extent(pos_data, d => d.y))
+        .domain([0, 15000]) 
         .range([height, 0])
 
-    const circles = pos_data.map((d,i) =>(
-        <circle
-            key = {i}
-            r = {5}
-            cx = {xScale(d.x)}
-            cy = {yScale(d.y)}
-            style = {{fill: "lightblue"}}
-        />
-        )
-    )
-    
-    //link for the artice detailing this scatterplot: https://dev.to/julienassouline/let-s-get-started-with-react-and-d3-2nd7
 
     return (
     <div>
+        {/*Next, I need to create another svg rectangle that is going to display each character (5 circles) and relev information for each character at the given frame*/}
         <svg width = {w} height = {h} >
             <g transform={`translate(${margin.left},${margin.top})`}>
                 <AxisLeft yScale={yScale} width={width}/>
                 <AxisBottom xScale={xScale} height={height}/>
-                {circles}
+                <Circles pos_data={frame_pos_data} xScale={xScale} yScale={yScale}/>
+                <CirclesText pos_data={frame_pos_data} xScale={xScale} yScale={yScale}/>
             </g>
         </svg>
     </div>
     )
 }
 
-export {Visual}
+export {FrameGraph}
