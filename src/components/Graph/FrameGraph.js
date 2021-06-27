@@ -21,7 +21,7 @@ function FrameGraph({frame_pos_data, graphDimensions}){
 
 
     return (
-    <div>
+    <div className="visual">
         <svg width = {graphDimensions.outerWidth} height = {graphDimensions.outerHeight} className="positionGraph" >
             <g transform={`translate(${graphDimensions.margins.left},${graphDimensions.margins.top})`}>
                 <AxisLeft yScale={yScale} width={graphDimensions.innerWidth}/>
