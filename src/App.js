@@ -35,6 +35,7 @@ function App() {
 
   return (
     <div className="App">
+      <p>Title</p>
       <Game game_data={data}/>
     </div>
   );

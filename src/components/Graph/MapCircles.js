@@ -1,4 +1,4 @@
-function Circles({pos_data, xScale, yScale}) {
+function MapCircles({pos_data, xScale, yScale}) {
 
     const circles = pos_data.map((d,i) =>(
         <circle
@@ -16,4 +16,4 @@ function Circles({pos_data, xScale, yScale}) {
 
 }
 
-export {Circles}
+export {MapCircles}

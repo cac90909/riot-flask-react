@@ -1,4 +1,4 @@
-function CirclesText({pos_data, xScale, yScale}){
+function MapCirclesText({pos_data, xScale, yScale}){
     
     const circles_text = pos_data.map((d,i) => (
         <text
@@ -15,4 +15,4 @@ function CirclesText({pos_data, xScale, yScale}){
 
 }
 
-export {CirclesText}
+export {MapCirclesText}
