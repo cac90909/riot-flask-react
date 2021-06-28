@@ -21,7 +21,6 @@ function FrameGraph({frame_pos_data, graphDimensions}){
 
 
     return (
-    <div className="visual">
         <svg width = {graphDimensions.outerWidth} height = {graphDimensions.outerHeight} className="positionGraph" >
             <g transform={`translate(${graphDimensions.margins.left},${graphDimensions.margins.top})`}>
                 <AxisLeft yScale={yScale} width={graphDimensions.innerWidth}/>
@@ -30,7 +29,6 @@ function FrameGraph({frame_pos_data, graphDimensions}){
                 <MapCirclesText pos_data={frame_pos_data} xScale={xScale} yScale={yScale}/>
             </g>
         </svg>
-    </div>
     )
 }
 

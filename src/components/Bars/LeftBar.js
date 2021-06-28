@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from "react"
 import * as d3 from 'd3'
-import {BarCircles} from "./BarCircles"
 import {BarPlayerInfo} from "./BarPlayerInfo"
+import {BarPlayerMetrics} from "./BarPlayerMetrics"
+import {BarHeaderLabels} from "./BarHeaderLabels"
 
 
-function LeftBar({barDimensions}){
+function LeftBar({barDimensions, frame_player_data}){
 
     const xScale = d3.scaleLinear()
         .domain([0, 1000]) 
@@ -15,11 +16,13 @@ function LeftBar({barDimensions}){
         .range([barDimensions.outerHeight, 0])
 
 
+
     return (
         <svg width = {barDimensions.outerWidth} height = {barDimensions.outerHeight} className="leftBar">
             <g transform={`translate(${barDimensions.margins.left},${barDimensions.margins.top})`}>
-                <BarCircles barDimensions={barDimensions} xScale={xScale} yScale={yScale} className ="leftBarCircles"/>
-                <BarPlayerInfo barDimensions={barDimensions} xScale={xScale} yScale={yScale} className ="leftBarPlayerInfo"/>
+                <BarHeaderLabels barDimensions={barDimensions} xScale={xScale} yScale={yScale} className="leftBarHeaderLabels" />
+                <BarPlayerInfo barDimensions={barDimensions} xScale={xScale} yScale={yScale} className ="leftBarCircles"/>
+                <BarPlayerMetrics barDimensions={barDimensions} xScale={xScale} yScale={yScale} className ="leftBarPlayerMetrics"/>
             </g>
         </svg>
     
