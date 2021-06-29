@@ -1,0 +1,10 @@
+function SwapChampIdForChampName({champ_id, champ_data}){
+
+    for(var champ_name in champ_data){
+        if (champ_data[champ_name].key == champ_id) {
+            return champ_name
+        }
+    }
+}
+
+export {SwapChampIdForChampName}

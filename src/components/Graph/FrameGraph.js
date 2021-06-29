@@ -7,8 +7,7 @@ import {MapCircles} from "./MapCircles"
 import {MapCirclesText} from "./MapCirclesText"
 
 function FrameGraph({frame_pos_data, graphDimensions}){
-    console.log("Visual.js is rendering")
-    console.log("frame_pos_data object in Visual.js", frame_pos_data)
+    console.log("A new FrameGraph is rendering from components/Graph/FrameGraph.js")
 
 
     const xScale = d3.scaleLinear()

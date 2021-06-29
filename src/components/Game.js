@@ -1,15 +1,18 @@
 import React, {useState, useEffect} from 'react';
+
 import {FrameGraph} from './Graph/FrameGraph'
+import {GraphDimensions} from "./Graph/GraphDimensions"
+
 import {LeftBar} from './Bars/LeftBar'
 import {RightBar} from './Bars/RightBar'
-import {GraphDimensions} from "./Graph/GraphDimensions"
 import {BarDimensions} from "./Bars/BarDimensions"
+
 import { GetPlayerPos } from './Data/GetPlayerPos';
 import {GetNextIndex} from './Data/GetNextIndex'
 import {GetPreviousIndex} from './Data/GetPreviousIndex'
 
 
-function Game({game_data}) {
+function Game({game_data, champ_data}) {
     console.log("Game.js is rendering")
 
 
@@ -26,8 +29,7 @@ function Game({game_data}) {
     return(
         <div>
             <div className="topHalf">
-                {/*Next, I need to create another svg rectangle that is going to display each character (5 circles) and relev information for each character at the given frame*/}
-                <LeftBar barDimensions={BarDimensions()} frame_player_data={frame_player_data}/>
+                <LeftBar barDimensions={BarDimensions()} game_data = {game_data} champ_data={champ_data}/> {/*trying to figure out what should be passed to left bar vs just created/called in left bar */}
                 <FrameGraph frame_pos_data={frame_pos_data} graphDimensions={GraphDimensions()} />
                 <RightBar barDimensions={BarDimensions()} frame_player_data={frame_player_data}/> {/*Need to flesh out this indicator for to display the info that I am wanting*/}
             </div>
