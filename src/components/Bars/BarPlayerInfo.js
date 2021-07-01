@@ -1,22 +1,29 @@
 import * as d3 from 'd3'
+import "./ChampImage.css"
 
 function BarPlayerInfo({barDimensions, xScale, yScale, player_info}){
 
 
-    //I think I can use BarCircles and other bar js files for both the left and right bar. I think I would just need to pass them seperate scales that would essentially "mirror" each other's layouts
+
+    console.log("player_info inside of BarPlayerInfo:", player_info)
 
     const five_array = [0,200,400,600,800]
 
-    const circles = five_array.map((d,i) => (
+    const circles = player_info.map((d,i) => (
         <circle
         key={i}
+        className = {d.ChampionName+"Circle"}
         r = {20}
         cx = {xScale(500)}
-        cy = {yScale(d+100)}
+        cy = {yScale(five_array[i]+100)}
         style = {{fill:"blue"}}
+        {...console.log("Current player info:", d)}
         >
         </circle>
+        
     ))
+
+
 
     return <>{circles}</>
 }

@@ -22,13 +22,14 @@ function LeftBar({barDimensions, game_data, champ_data}){
 
     
     var player_info = GetPlayerInfo({game_data, champ_data})
+    var player_info_team_1 = player_info.splice(0,5)
 
 
     return (
         <svg width = {barDimensions.outerWidth} height = {barDimensions.outerHeight} className="leftBar">
             <g transform={`translate(${barDimensions.margins.left},${barDimensions.margins.top})`}>
                 <BarHeaderLabels barDimensions={barDimensions} xScale={xScale} yScale={yScale} className="leftBarHeaderLabels" />
-                <BarPlayerInfo barDimensions={barDimensions} xScale={xScale} yScale={yScale} player_info={player_info} className ="leftBarPlayerInfo"/>
+                <BarPlayerInfo barDimensions={barDimensions} xScale={xScale} yScale={yScale} player_info={player_info_team_1} className ="leftBarPlayerInfo"/>
                 <BarPlayerMetrics barDimensions={barDimensions} xScale={xScale} yScale={yScale} className ="leftBarPlayerMetrics"/>
             </g>
         </svg>
