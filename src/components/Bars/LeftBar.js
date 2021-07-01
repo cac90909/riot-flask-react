@@ -3,12 +3,12 @@ import * as d3 from 'd3'
 
 import {BarPlayerInfo} from "./BarPlayerInfo"
 import {BarPlayerMetrics} from "./BarPlayerMetrics"
-import {BarHeaderLabels} from "./BarHeaderLabels"
 
 import {GetPlayerInfo} from "../Data/GetPlayerInfo"
+import { GetFramePlayerMetrics } from "../Data/GetFramePlayerMetrics"
 
 
-function LeftBar({barDimensions, game_data, champ_data}){
+function LeftBar({barDimensions, game_data, champ_data, frame_player_metrics}){
 
     console.log("LeftBar.js is rendering")
 
@@ -24,13 +24,14 @@ function LeftBar({barDimensions, game_data, champ_data}){
     var player_info = GetPlayerInfo({game_data, champ_data})
     var player_info_team_1 = player_info.splice(0,5)
 
+    var frame_player_metrics_team_1 = frame_player_metrics.splice(0,5)
+
 
     return (
         <svg width = {barDimensions.outerWidth} height = {barDimensions.outerHeight} className="leftBar">
             <g transform={`translate(${barDimensions.margins.left},${barDimensions.margins.top})`}>
-                <BarHeaderLabels barDimensions={barDimensions} xScale={xScale} yScale={yScale} className="leftBarHeaderLabels" />
                 <BarPlayerInfo barDimensions={barDimensions} xScale={xScale} yScale={yScale} player_info={player_info_team_1} className ="leftBarPlayerInfo"/>
-                <BarPlayerMetrics barDimensions={barDimensions} xScale={xScale} yScale={yScale} className ="leftBarPlayerMetrics"/>
+                <BarPlayerMetrics barDimensions={barDimensions} xScale={xScale} yScale={yScale} frame_player_metrics={frame_player_metrics_team_1} className ="leftBarPlayerMetrics"/>
             </g>
         </svg>
     

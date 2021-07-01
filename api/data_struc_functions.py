@@ -64,7 +64,7 @@ def get_relev_info(timeline, match_detail):
 
 def get_relev_info_TEST():
     match_list = helper_functions.get_match_list()
-    g_id = helper_functions.get_game_id_list(match_list)[0]
+    g_id = helper_functions.get_game_id_list(match_list)[0] #Note: match history is in order of occurence. The match at position [0] is always going to be the most recently played game on the match history
 
     time = helper_functions.get_match_timeline(g_id)
     match_det = helper_functions.get_match_detail(g_id)

@@ -17,13 +17,25 @@ function BarDimensions(){
     const innerWidth = outerWidth - margins.left - margins.right
     const innerHeight = outerHeight - margins.top - margins.bottom
 
+    const barPlayerInfoDimensions = {
+        y_array : [1000, 800, 600, 400, 200],
+        image_padding : 2.5,
+        x : 500,
+        image_w: 50,
+        image_h : 50,
+        border_w : 55,
+        border_h : 55
+    }
+    
     const barDimensions = {
         outerWidth,
         outerHeight,
         margins,
         innerWidth,
-        innerHeight
+        innerHeight,
+        barPlayerInfoDimensions
     }
+
 
     return barDimensions
 
