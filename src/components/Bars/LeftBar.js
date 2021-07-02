@@ -31,7 +31,7 @@ function LeftBar({barDimensions, game_data, champ_data, frame_player_metrics}){
         <svg width = {barDimensions.outerWidth} height = {barDimensions.outerHeight} className="leftBar">
             <g transform={`translate(${barDimensions.margins.left},${barDimensions.margins.top})`}>
                 <BarPlayerInfo barDimensions={barDimensions} xScale={xScale} yScale={yScale} player_info={player_info_team_1} className ="leftBarPlayerInfo"/>
-                <BarPlayerMetrics barDimensions={barDimensions} xScale={xScale} yScale={yScale} frame_player_metrics={frame_player_metrics_team_1} className ="leftBarPlayerMetrics"/>
+                <BarPlayerMetrics barDimensions={barDimensions} xScale={xScale} yScale={yScale} player_info = {player_info_team_1} frame_player_metrics={frame_player_metrics_team_1} className ="leftBarPlayerMetrics"/>
             </g>
         </svg>
     

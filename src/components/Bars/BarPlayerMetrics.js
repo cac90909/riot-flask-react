@@ -1,4 +1,4 @@
-function BarPlayerMetrics({barDimensions, xScale, yScale, frame_player_metrics}){
+function BarPlayerMetrics({barDimensions, xScale, yScale, frame_player_metrics, player_info}){
 
     console.log("BarPlayerMetrics player_info:",)
 
@@ -28,6 +28,7 @@ function BarPlayerMetrics({barDimensions, xScale, yScale, frame_player_metrics})
             y ={yScale(dim.y_array[i] - text_block_padding)+(text_line_padding*2)}
             style = {{fill: "Black", textAlign: "left", fontSize: 12}}>
             {"CS: " + d.CS}
+            {"id:" + d.ParticipantId}
             </text>
         </g>
     )

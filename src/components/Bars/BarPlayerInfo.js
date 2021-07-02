@@ -15,9 +15,17 @@ function BarPlayerInfo({barDimensions, xScale, yScale, player_info}){
     }
 
     const dim = barDimensions.barPlayerInfoDimensions
+    const text_padding = 10
 
     const circles = positions.map((pos,i) => (
     <g transform={`translate(${barDimensions.margins.left},${barDimensions.margins.top})`} key={i}>
+        <text
+        key = {player_info[i].SummonerName + "Name"}
+        x= {xScale(dim.x)}
+        y ={yScale(dim.y_array[i])-text_padding}
+        style = {{fill: "Black", textAlign: "left", fontSize: 12}}>
+        {player_info[i].SummonerName}
+        </text>
         <rect
         x = {xScale(dim.x)}
         y = {yScale(dim.y_array[i])}

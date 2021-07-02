@@ -11,6 +11,7 @@ import { GetFramePlayerPosition } from './Data/GetPlayerPos';
 import { GetFramePlayerMetrics } from './Data/GetFramePlayerMetrics';
 import {GetNextIndex} from './Data/GetNextIndex'
 import {GetPreviousIndex} from './Data/GetPreviousIndex'
+import {GetGameTime} from './Data/GetGameTime'
 
 
 function Game({game_data, champ_data}) {
@@ -33,25 +34,16 @@ function Game({game_data, champ_data}) {
     var last_frame = game_data.Events[game_data.Events.length-1].timestamp //duration is in seconds
     var game_duration = game_data.Summary.Game.gameDuration
 
-    console.log("game_duration:", game_duration)
+    var frame_index = frame_list.indexOf(frame)
+    var last_frame_index = frame_list.length - 1
 
-    var frames_per_second = last_frame/game_duration
-
-    function GetTimeFromSeconds(frame, game_duration, last_frame){
-
-        var seconds = ((frame*game_duration)/last_frame)
-        var date = new Date(0);
-        date.setSeconds(seconds); // specify value for SECONDS here
-        var timeString = date.toISOString().substr(11, 8);
-        return timeString
-
-    }
+   
     
     return(
         <div>
             <div className="currentFrame">
-                <p>Frame: {frame}</p>
-                <p>Time: {GetTimeFromSeconds(frame, game_duration, last_frame)} </p>
+                <p>Frame: {frame_index + "/" + last_frame_index}</p>
+                <p>Time: {GetGameTime(frame, game_duration, last_frame)} </p>
             </div>
             <div className="topHalf">
                 <LeftBar barDimensions={BarDimensions()} game_data = {game_data} champ_data={champ_data} frame_player_metrics={frame_player_metrics}/>

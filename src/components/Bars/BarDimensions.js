@@ -18,7 +18,7 @@ function BarDimensions(){
     const innerHeight = outerHeight - margins.top - margins.bottom
 
     const barPlayerInfoDimensions = {
-        y_array : [1000, 800, 600, 400, 200],
+        y_array : [950,750,550,350,150],
         image_padding : 2.5,
         x : 500,
         image_w: 50,
