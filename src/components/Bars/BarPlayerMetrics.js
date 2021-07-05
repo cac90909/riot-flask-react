@@ -27,7 +27,7 @@ function BarPlayerMetrics({barDimensions, xScale, yScale, frame_player_metrics, 
             x= {xScale(dim.x)+100}
             y ={yScale(dim.y_array[i] - text_block_padding)+(text_line_padding*2)}
             style = {{fill: "Black", textAlign: "left", fontSize: 12}}>
-            {"CS: " + d.CS}
+            {"CS: " + d.CS + " - - - - "}
             {"id:" + d.ParticipantId}
             </text>
         </g>

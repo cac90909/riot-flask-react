@@ -1,5 +1,4 @@
 import * as d3 from 'd3'
-import "./ChampImage.css"
 
 function BarPlayerInfo({barDimensions, xScale, yScale, player_info}){
 
@@ -24,7 +23,8 @@ function BarPlayerInfo({barDimensions, xScale, yScale, player_info}){
         x= {xScale(dim.x)}
         y ={yScale(dim.y_array[i])-text_padding}
         style = {{fill: "Black", textAlign: "left", fontSize: 12}}>
-        {player_info[i].SummonerName}
+        {"Name: " + player_info[i].SummonerName + " - - - - " }
+        {" Id: " + player_info[i].ParticipantId }
         </text>
         <rect
         x = {xScale(dim.x)}

@@ -4,9 +4,10 @@ import '../Visual.css'
 import {AxisBottom} from "./AxisBottom"
 import {AxisLeft} from "./AxisLeft"
 import {MapCircles} from "./MapCircles"
-import {MapCirclesText} from "./MapCirclesText"
 
-function FrameGraph({frame_pos_data, graphDimensions}){
+
+
+function FrameGraph({game_data, champ_data, frame, frame_list, graphDimensions}){
     console.log("A new FrameGraph is rendering from components/Graph/FrameGraph.js")
 
 
@@ -18,14 +19,14 @@ function FrameGraph({frame_pos_data, graphDimensions}){
         .domain([0, 15000]) 
         .range([graphDimensions.outerHeight, 0])
 
+    
 
     return (
         <svg width = {graphDimensions.outerWidth} height = {graphDimensions.outerHeight} className="positionGraph" >
             <g transform={`translate(${graphDimensions.margins.left},${graphDimensions.margins.top})`}>
                 <AxisLeft yScale={yScale} width={graphDimensions.innerWidth}/>
                 <AxisBottom xScale={xScale} height={graphDimensions.innerHeight}/>
-                <MapCircles pos_data={frame_pos_data} xScale={xScale} yScale={yScale}/>
-                <MapCirclesText pos_data={frame_pos_data} xScale={xScale} yScale={yScale}/>
+                <MapCircles graphDimensions = {graphDimensions} game_data={game_data} champ_data= {champ_data} frame={frame} frame_list={frame_list} xScale={xScale} yScale={yScale}/>
             </g>
         </svg>
     )

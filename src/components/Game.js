@@ -22,8 +22,6 @@ function Game({game_data, champ_data}) {
     var key = game_data_timestamps_keys[0] 
 
 
-    console.log("Frame log here ->", game_data_timestamps_keys)
-
     const [frame_list, changeFrameList] = useState(game_data_timestamps_keys)
     const [frame, changeFrame] = useState(key)
 
@@ -47,7 +45,7 @@ function Game({game_data, champ_data}) {
             </div>
             <div className="topHalf">
                 <LeftBar barDimensions={BarDimensions()} game_data = {game_data} champ_data={champ_data} frame_player_metrics={frame_player_metrics}/>
-                <FrameGraph frame_pos_data={frame_pos_data} graphDimensions={GraphDimensions()} />
+                <FrameGraph game_data = {game_data} champ_data={champ_data} frame={frame} frame_list={frame_list} graphDimensions={GraphDimensions()} />
                 <RightBar barDimensions={BarDimensions()}/> 
             </div>
             <div className = "Buttons">
