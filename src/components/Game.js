@@ -44,7 +44,7 @@ function Game({game_data, champ_data}) {
                 <p>Time: {GetGameTime(frame, game_duration, last_frame)} </p>
             </div>
             <div className="topHalf">
-                <LeftBar barDimensions={BarDimensions()} game_data = {game_data} champ_data={champ_data} frame_player_metrics={frame_player_metrics}/>
+                <LeftBar game_data = {game_data} champ_data={champ_data} frame={frame} frame_list={frame_list} barDimensions={BarDimensions()}/>
                 <FrameGraph game_data = {game_data} champ_data={champ_data} frame={frame} frame_list={frame_list} graphDimensions={GraphDimensions()} />
                 <RightBar barDimensions={BarDimensions()}/> 
             </div>

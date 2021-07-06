@@ -1,46 +1,47 @@
 import * as d3 from 'd3'
 
-function BarPlayerInfo({barDimensions, xScale, yScale, player_info}){
+import { GetBlueTeamLaneRoles } from '../Data/GetBlueTeamLaneRoles'
+import { GetBlueTeamIds } from '../Data/GetBlueTeamIds'
+import { GetBlueTeamYValuesFromLaneRoles } from "../Data/GetBlueTeamYValuesFromLaneRoles"
+import { GetLaneRoleFromId } from '../Data/GetLaneRoleFromId'
+import { GetTeamFromId } from '../Data/GetTeamFromId'
+import { GetChampImageLinkFromId } from '../Data/GetChampImageLinkFromId'
+import {GetSummonerNameFromId} from '../Data/GetSummonerNameFromId'
 
-    const positions = ["TOP", "JUNGLE", "MIDDLE", "BOTTOM", "BOTTOM"]
-    const roles = ["SOLO", "NONE", "SOLO", "DUO_CARRY", "DUO_SUPPORT"]
+function BarPlayerInfo({game_data, champ_data, barDimensions, xScale, yScale}){
 
-    function GetChampImageLinkAtPositionX(position, role, player_info){
-        for (var player in player_info){
-            if (player_info[player].Lane == position && player_info[player].Role == role){
-                return player_info[player].ImageLink
-            }
-        }
-    }
+    const team_1_ids = GetBlueTeamIds({game_data})
+    const team_1_lanes_roles = GetBlueTeamLaneRoles({game_data}, team_1_ids)
+    const team_1_y_values = GetBlueTeamYValuesFromLaneRoles({game_data, barDimensions}, team_1_lanes_roles)
 
     const dim = barDimensions.barPlayerInfoDimensions
     const text_padding = 10
 
-    const circles = positions.map((pos,i) => (
+    const circles = team_1_y_values.map((pos,i) => (
     <g transform={`translate(${barDimensions.margins.left},${barDimensions.margins.top})`} key={i}>
         <text
-        key = {player_info[i].SummonerName + "Name"}
+        key = {"BlueTeamBarPlayerInfoText" + team_1_lanes_roles[i][0] + team_1_lanes_roles[i][1]}
         x= {xScale(dim.x)}
-        y ={yScale(dim.y_array[i])-text_padding}
+        y ={yScale(pos)-text_padding}
         style = {{fill: "Black", textAlign: "left", fontSize: 12}}>
-        {"Name: " + player_info[i].SummonerName + " - - - - " }
-        {" Id: " + player_info[i].ParticipantId }
+        {"Name: " + GetSummonerNameFromId({game_data}, team_1_ids[i]) + " - - - - " }
+        {" Id: " + team_1_ids[i] }
         </text>
         <rect
         x = {xScale(dim.x)}
-        y = {yScale(dim.y_array[i])}
+        y = {yScale(pos)}
         width={dim.border_w}
         height={dim.border_h}
         style = {{fill:"blue"}}
         > 
         </rect>
         <image 
-        key = {player_info[i].ParticipantId}
-        href= {GetChampImageLinkAtPositionX(pos, roles[i], player_info)}
+        key = {"BlueTeamBarPlayerInfoImage" + team_1_lanes_roles[i][0] + team_1_lanes_roles[i][1]}
+        href= {GetChampImageLinkFromId({game_data, champ_data}, team_1_ids[i])}
         width={dim.image_w} 
         height = {dim.image_h} 
         x={xScale(dim.x)+dim.image_padding} 
-        y={yScale(dim.y_array[i])+dim.image_padding}>
+        y={yScale(pos)+dim.image_padding}>
         </image>
     </g>
     ))

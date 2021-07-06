@@ -24,9 +24,7 @@ function FrameGraph({game_data, champ_data, frame, frame_list, graphDimensions})
     return (
         <svg width = {graphDimensions.outerWidth} height = {graphDimensions.outerHeight} className="positionGraph" >
             <g transform={`translate(${graphDimensions.margins.left},${graphDimensions.margins.top})`}>
-                <AxisLeft yScale={yScale} width={graphDimensions.innerWidth}/>
-                <AxisBottom xScale={xScale} height={graphDimensions.innerHeight}/>
-                <MapCircles graphDimensions = {graphDimensions} game_data={game_data} champ_data= {champ_data} frame={frame} frame_list={frame_list} xScale={xScale} yScale={yScale}/>
+                <MapCircles game_data={game_data} champ_data= {champ_data} frame={frame} frame_list={frame_list} graphDimensions = {graphDimensions} xScale={xScale} yScale={yScale}/>
             </g>
         </svg>
     )
