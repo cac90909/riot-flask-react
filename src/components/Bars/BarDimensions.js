@@ -9,7 +9,7 @@ function BarDimensions(){
 
     var screenPadding = 50
 
-    const outerWidth = (screenWidth - graphDimensions.outerWidth - screenPadding)/2
+    const outerWidth = (screenWidth - graphDimensions.outerWidth - screenPadding)/1.895
     const outerHeight = graphDimensions.outerHeight
 
     const margins = graphDimensions.margins //these are inner margins, not outer margins

@@ -11,6 +11,7 @@ function MapCircles({game_data, frame, frame_list, champ_data, graphDimensions, 
     const circles = game_data.Timestamps[frame].map((d,i) =>(
         <g transform={`translate(${graphDimensions.margins.left},${graphDimensions.margins.top})`}>
             <rect
+                key={"MapCircleBorder" + d.participantId}
                 width={img_dim+img_border_padding}
                 height={img_dim+img_border_padding}
                 x={xScale(d.position.x)}
@@ -18,6 +19,7 @@ function MapCircles({game_data, frame, frame_list, champ_data, graphDimensions, 
                 style={ GetTeamFromId(game_data,d.participantId) == 100 ? {fill: "Blue"} : {fill: "Red"}}
             />
             <image
+                key={"MapCircleImage" + d.participantId}
                 href={GetChampImageLinkFromId({game_data, champ_data}, d.participantId)}
                 width={img_dim}
                 height={img_dim}
@@ -26,6 +28,7 @@ function MapCircles({game_data, frame, frame_list, champ_data, graphDimensions, 
                 style={{borderWidth: '5px', borderColor:'red'}}
             />
             <text
+                key={"MapCircleText" + d.participantId}
                 x={xScale(d.position.x)}
                 y={yScale(d.position.y)-text_padding}
                 style = {{fill: "Black", textAlign: "left", fontSize: 12}}
