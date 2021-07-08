@@ -1,7 +1,5 @@
 function GetPlayerScoreFromId({game_data}, frame_num, participant_id){
 
-    console.log("Frame num:", frame_num)
-
     function HasHappend(event){
         if (event.timestamp < frame_num){
             return event

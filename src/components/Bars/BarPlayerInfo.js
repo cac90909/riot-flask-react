@@ -24,8 +24,7 @@ function BarPlayerInfo({game_data, champ_data, barDimensions, xScale, yScale}){
         x= {xScale(dim.x)}
         y ={yScale(pos)-text_padding}
         style = {{fill: "Black", textAlign: "left", fontSize: 12}}>
-        {"Name: " + GetSummonerNameFromId({game_data}, team_1_ids[i]) + " - - - - " }
-        {" Id: " + team_1_ids[i] }
+        {GetSummonerNameFromId({game_data}, team_1_ids[i])}
         </text>
         <rect
         x = {xScale(dim.x)}

@@ -26,19 +26,26 @@ function App() {
   const [champ_loading, setChampLoading] = useState(true)
   const champ_url = 'http://ddragon.leagueoflegends.com/cdn/11.13.1/data/en_US/champion.json'
   useEffect(() => axios.get(champ_url).then(response => setChampData(response.data.data)).then(() => setChampLoading(false)), [])
+
+  const [item_data, setItemData] = useState()
+  const [item_loading, setItemLoading] = useState(true)
+  const item_url = 'http://ddragon.leagueoflegends.com/cdn/11.14.1/data/en_US/item.json'
+  useEffect(() => axios.get(item_url).then(response => setItemData(response.data.data)).then(() => setItemLoading(false)), [])
+
  
-  if (game_loading || champ_loading) {
+  if (game_loading || champ_loading || item_loading) {
     return <div className="App">Loading...</div>;
   }
 
   console.log("game_data in App.js (where axios retrieves it):", game_data)
   console.log("champ_data in App.js (where axios retrieves it):", champ_data)
+  console.log("item_data in App.js (where axios retrieves it):", item_data)
   console.log("")
 
   return (
     <div className="App">
       <p>Game: {game_data.Summary.Game.gameId}</p>
-      <Game game_data={game_data} champ_data={champ_data}/>
+      <Game game_data={game_data} champ_data={champ_data} item_data={item_data}/>
     </div>
   );
 }

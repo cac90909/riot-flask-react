@@ -14,7 +14,7 @@ import {GetPreviousIndex} from './Data/GetPreviousIndex'
 import {GetGameTime} from './Data/GetGameTime'
 
 
-function Game({game_data, champ_data}) {
+function Game({game_data, champ_data, item_data}) {
     console.log("Game.js is rendering")
 
 
@@ -44,7 +44,7 @@ function Game({game_data, champ_data}) {
                 <p>Time: {GetGameTime(frame, game_duration, last_frame)} </p>
             </div>
             <div className="topHalf">
-                <LeftBar game_data = {game_data} champ_data={champ_data} frame={frame} frame_list={frame_list} barDimensions={BarDimensions()}/>
+                <LeftBar game_data = {game_data} champ_data={champ_data} item_data={item_data} frame={frame} frame_list={frame_list} barDimensions={BarDimensions()}/>
                 <FrameGraph game_data = {game_data} champ_data={champ_data} frame={frame} frame_list={frame_list} graphDimensions={GraphDimensions()} />
                 <RightBar barDimensions={BarDimensions()}/> 
             </div>

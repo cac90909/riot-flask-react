@@ -3,25 +3,35 @@ import { GetPlayerScoreFromId } from "../Data/GetPlayerScoreFromId";
 import { GetSummonerNameFromId } from "../Data/GetSummonerNameFromId";
 import { SwapChampIdForChampName } from "../Data/SwapChampIdForChampName";
 
+import { GetBlueTeamLaneRoles } from '../Data/GetBlueTeamLaneRoles'
+import { GetBlueTeamIds } from '../Data/GetBlueTeamIds'
+import { GetBlueTeamYValuesFromLaneRoles } from "../Data/GetBlueTeamYValuesFromLaneRoles" 
+
 function BarPlayerScores({game_data, champ_data, frame, frame_list, barDimensions, xScale, yScale}){
 
-    const test_array = [1,2,3,4,5]
+    const dim = barDimensions.barPlayerInfoDimensions
+    const team_1_ids = GetBlueTeamIds({game_data})
+    const team_1_lanes_roles = GetBlueTeamLaneRoles({game_data}, team_1_ids)
+    const team_1_y_values = GetBlueTeamYValuesFromLaneRoles({game_data, barDimensions}, team_1_lanes_roles)
 
-    const example_p_id = 1
-    const example_frame = frame_list[frame_list.length-1]
-    const example_player_score = GetPlayerScoreFromId({game_data}, example_frame, example_p_id)
-    const example_summoner_name = GetSummonerNameFromId({game_data}, example_p_id)
-    const example_champ_id = GetChampIdFromPlayerId({game_data}, example_p_id)
-    const example_champ_name = SwapChampIdForChampName({champ_data}, example_champ_id)
+    const x_padding = 200
+    const y_padding = 30.65
 
+    function DisplayScore(score){
+      const score_string = score[0] + "-" + score[1] + "-" + score[2]
+      return score_string
+    }
 
-    console.log('')
-    console.log("Testing 'GetPlayerScoreFromId' inside of 'BarPlayerScores'. Summoner Name: ", example_summoner_name, 
-                "Champion Name: ", example_champ_name, "End of Game Score Line: ", example_player_score)
-    console.log('')
-
-    const scores = test_array.map( (d,i) => (
+    const scores = team_1_y_values.map( (d,i) => (
         <g transform={`translate(${barDimensions.margins.left},${barDimensions.margins.top})`} key={i}>
+            <text
+                key={"ScoreForPId" + team_1_ids[i]}
+                x={xScale(dim.x)+x_padding}
+                y={yScale(d) + y_padding}
+                style = {{fill: "Black", textAlign: "left", fontSize: 12}} 
+              >
+              {DisplayScore(GetPlayerScoreFromId({game_data}, frame, team_1_ids[i]))}
+            </text>
         </g>
 
 

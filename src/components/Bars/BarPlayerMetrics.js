@@ -15,6 +15,7 @@ function BarPlayerMetrics({game_data, champ_data, frame, frame_list, barDimensio
     const dim = barDimensions.barPlayerInfoDimensions
     const text_line_padding = 15 
     const text_block_padding = 30
+    const x_padding = 100
 
     const team_1_ids = GetBlueTeamIds({game_data})
     const team_1_lanes_roles = GetBlueTeamLaneRoles({game_data}, team_1_ids)
@@ -24,28 +25,26 @@ function BarPlayerMetrics({game_data, champ_data, frame, frame_list, barDimensio
         <g transform={`translate(${barDimensions.margins.left},${barDimensions.margins.top})`} key={i}>
             <text
             key = {team_1_ids[i] + "Level"}
-            x= {xScale(dim.x)+100}
+            x= {xScale(dim.x)+x_padding}
             y ={yScale(d  - text_block_padding)}
-            style = {{fill: "Black", textAlign: "left", fontSize: 12}}>
-            {"Level: " + GetPlayerMetricsFromFrameAndId(current_frame, team_1_ids[i]).level + "- - - - "
-            + "Name: " + GetSummonerNameFromId({game_data}, team_1_ids[i])}
+            style = {{fill: "Black", textAlign: "left", fontSize: 12}}> 
+            {/*at some point, I want to team-color-code the metrics. Red team - red font. Blue team -  blue font*/}
+            {"Level: " + GetPlayerMetricsFromFrameAndId(current_frame, team_1_ids[i]).level}
             </text>
             <text
             key = {d.ParticipantId + "CurrentGold"}
-            x= {xScale(dim.x)+100}
+            x= {xScale(dim.x)+x_padding}
             y ={yScale(d - text_block_padding)+text_line_padding}
             style = {{fill: "Black", textAlign: "left", fontSize: 12}}>
-            {"Current Gold: "+ GetPlayerMetricsFromFrameAndId(current_frame, team_1_ids[i]).currentGold}
+            {"Gold: "+ GetPlayerMetricsFromFrameAndId(current_frame, team_1_ids[i]).currentGold}
             </text>
             <text
             key = {d.ParticipantId + "CS"}
-            x= {xScale(dim.x)+100}
+            x= {xScale(dim.x)+x_padding}
             y ={yScale(d - text_block_padding)+(text_line_padding*2)}
             style = {{fill: "Black", textAlign: "left", fontSize: 12}}>
             {"CS: " + (GetPlayerMetricsFromFrameAndId(current_frame, team_1_ids[i]).minionsKilled + 
-                       GetPlayerMetricsFromFrameAndId(current_frame, team_1_ids[i]).jungleMinionsKilled)
-                       + " - - - - "}
-            {"id:" + GetPlayerMetricsFromFrameAndId(current_frame, team_1_ids[i]).participantId}
+                       GetPlayerMetricsFromFrameAndId(current_frame, team_1_ids[i]).jungleMinionsKilled)}
             </text>
         </g>
     )

@@ -4,10 +4,11 @@ import * as d3 from 'd3'
 import {BarPlayerInfo} from "./BarPlayerInfo"
 import {BarPlayerMetrics} from "./BarPlayerMetrics"
 import {BarPlayerScores} from "./BarPlayerScores"
+import {BarPlayerItems} from "./BarPlayerItems"
 
 
 
-function LeftBar({game_data, champ_data, frame, frame_list, barDimensions}){
+function LeftBar({game_data, champ_data, item_data, frame, frame_list, barDimensions}){
 
     console.log("LeftBar.js is rendering")
 
@@ -31,6 +32,9 @@ function LeftBar({game_data, champ_data, frame, frame_list, barDimensions}){
                 <BarPlayerScores game_data = {game_data} champ_data={champ_data} frame={frame} 
                 frame_list={frame_list} barDimensions={barDimensions} xScale={xScale} yScale={yScale} 
                 className ="leftBarPlayerScores"/>
+                <BarPlayerItems game_data = {game_data} champ_data={champ_data} item_data={item_data} 
+                frame={frame} frame_list={frame_list} barDimensions={barDimensions} xScale={xScale} 
+                yScale={yScale} className ="leftBarPlayerItems"/>
             </g>
         </svg>
     
