@@ -35,7 +35,7 @@ function Game({game_data, champ_data, item_data}) {
     var frame_index = frame_list.indexOf(frame)
     var last_frame_index = frame_list.length - 1
 
-   
+    console.log("Current in game time:", GetGameTime(frame, game_duration, last_frame))
     
     return(
         <div>
