@@ -89,7 +89,7 @@ function GetPlayerItemsFromId({game_data, item_data}, frame_num, participant_id,
             }
             if (before_id != 0 && after_id ==0){ //undid a buy...aka no longer possess item...aka remove the item from active_items
                 var item_retracted = SwapItemIdForItemName({item_data}, before_id)
-                var before_item_index = active_items.indexOf(item_retracted)
+                var before_item_index = active_items.indexOf(before_id)
                 if (before_item_index != -1){
                     active_items.splice(before_item_index,1)
                     transaction_sequence.push(["Undo-Remove", current_time, event.timestamp, item_retracted, before_id])
@@ -101,6 +101,7 @@ function GetPlayerItemsFromId({game_data, item_data}, frame_num, participant_id,
         
         
     }
+
 
     return active_items
 

@@ -10,5 +10,8 @@
 .topHalf {
     display:flex; 
     flex-direction:row;
-    justify-content: space-around
+    justify-content: space-around;
+    flex-wrap: no-wrap;
+    align-items: center
 }
+

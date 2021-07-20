@@ -9,7 +9,7 @@ function MapCircles({game_data, frame, frame_list, champ_data, graphDimensions, 
     const img_border_padding = 2.5
 
     const circles = game_data.Timestamps[frame].map((d,i) =>(
-        <g transform={`translate(${graphDimensions.margins.left},${graphDimensions.margins.top})`}>
+        <g transform={`translate(${graphDimensions.margins.left},${graphDimensions.margins.top})`} key={"MapCirclesAtFrame" + frame + "ForPlayerId" + d.participantId}>
             <rect
                 key={"MapCircleBorder" + d.participantId}
                 width={img_dim+img_border_padding}

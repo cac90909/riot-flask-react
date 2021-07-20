@@ -46,7 +46,7 @@ function Game({game_data, champ_data, item_data, ss_data}) {
             <div className="topHalf">
                 <LeftBar game_data = {game_data} champ_data={champ_data} item_data={item_data} ss_data={ss_data} frame={frame} frame_list={frame_list} barDimensions={BarDimensions()}/>
                 <FrameGraph game_data = {game_data} champ_data={champ_data} frame={frame} frame_list={frame_list} graphDimensions={GraphDimensions()} />
-                <RightBar barDimensions={BarDimensions()}/> 
+                <RightBar game_data = {game_data} champ_data={champ_data} item_data={item_data} ss_data={ss_data} frame={frame} frame_list={frame_list} barDimensions={BarDimensions()}/> 
             </div>
             <div className = "Buttons">
                 <button id='prevFrame' onClick={() => changeFrame(GetPreviousIndex({frame, frame_list}))} style={{marginRight : 10}}>&lt;-- Frame</button>

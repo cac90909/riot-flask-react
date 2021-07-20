@@ -5,7 +5,10 @@ import { GetSummonerSpellsFromId } from "./GetSummonerSpellsFromId"
 import { SwapChampIdForChampName } from "./SwapChampIdForChampName"
 import { SwapSSIdForName } from "./SwapSSIdForName"
 
-function GetBlueTeamLaneRoles({game_data, champ_data, item_data, ss_data, frame, frame_list}, team_1_ids){
+function GetTeamLaneAssignments({game_data, champ_data, item_data, ss_data, frame, frame_list}, team_1_ids){
+
+    //I think that at some point, I want to call this method in Game.js or App.js and label the var as 'lane assignment' and just pass it down as props instead of individual components calling the method
+    //might be helpful for efficiency purposes since this method has so many if statements. Just a thought...
 
     function GetPlayerPos({game_data}, frame, player_id){
 
@@ -117,4 +120,4 @@ function GetBlueTeamLaneRoles({game_data, champ_data, item_data, ss_data, frame,
     return team_1_lanes
 }
 
-export {GetBlueTeamLaneRoles}
+export {GetTeamLaneAssignments}

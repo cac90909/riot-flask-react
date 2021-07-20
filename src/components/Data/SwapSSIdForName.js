@@ -1,5 +1,6 @@
 function SwapSSIdForName({ss_data}, ss){
 
+
     var ss_names = []
 
     for (var summoner_spell in ss_data){
@@ -9,6 +10,7 @@ function SwapSSIdForName({ss_data}, ss){
             ss_names.push(ss_obj.name)
         }
     }
+
 
     return ss_names
 

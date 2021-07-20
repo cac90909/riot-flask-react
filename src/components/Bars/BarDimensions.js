@@ -17,15 +17,11 @@ function BarDimensions(){
     const innerWidth = outerWidth - margins.left - margins.right
     const innerHeight = outerHeight - margins.top - margins.bottom
     
-    const barPlayerInfoDimensions = {
+    const barComponentDimensions = {
         y_array : [950,750,550,350,150],
-        image_padding : 2.5,
-        x : 500, // 7-8-2021 note: at some point, going to need to make coordinates more dependent on each other 
+        blue_team_x : 525, // 7-8-2021 note: at some point, going to need to make coordinates more dependent on each other 
                  //(for window size scalability purposes). For now, going to just find values that work for now.
-        image_w: 50,
-        image_h : 50,
-        border_w : 55,
-        border_h : 55
+        red_team_x : 425
     }
 
     const barDimensions = {
@@ -34,7 +30,7 @@ function BarDimensions(){
         margins,
         innerWidth,
         innerHeight,
-        barPlayerInfoDimensions
+        barComponentDimensions
     }
 
 

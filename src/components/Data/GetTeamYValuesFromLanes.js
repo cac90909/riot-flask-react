@@ -1,13 +1,13 @@
-function GetBlueTeamYValuesFromLaneRoles({game_data, barDimensions}, team_1_lanes_roles){
+function GetTeamYValuesFromLanes({game_data, barDimensions}, team_lanes){
 
     const positions = ["TOP", "JUNGLE", "MIDDLE", "ADC", "SUPPORT"]
 
-    const dim = barDimensions.barPlayerInfoDimensions.y_array
+    const dim = barDimensions.barComponentDimensions.y_array
 
 
     const y_values = []
 
-    for (var pos of team_1_lanes_roles){
+    for (var pos of team_lanes){
         for(let i=0; i<5; i++){
             if(pos == positions[i]){
                 y_values.push(dim[i])
@@ -19,4 +19,4 @@ function GetBlueTeamYValuesFromLaneRoles({game_data, barDimensions}, team_1_lane
 
 }
 
-export {GetBlueTeamYValuesFromLaneRoles}
+export {GetTeamYValuesFromLanes}
