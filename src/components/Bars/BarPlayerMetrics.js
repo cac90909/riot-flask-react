@@ -8,7 +8,7 @@ import {GetSummonerNameFromId} from '../Data/GetSummonerNameFromId'
 import { GetPlayerMetricsFromFrameAndId} from '../Data/GetPlayerMetricsFromFrameAndId'
 
 
-function BarPlayerMetrics({game_data, champ_data, frame, frame_list, barDimensions, xScale, yScale}){
+function BarPlayerMetrics({game_data, team_1_ids, team_1_lanes_roles, team_1_y_values, frame, barDimensions, xScale, yScale}){
     
     const current_frame = game_data.Timestamps[frame]
 
@@ -16,10 +16,6 @@ function BarPlayerMetrics({game_data, champ_data, frame, frame_list, barDimensio
     const text_line_padding = 15 
     const text_block_padding = 30
     const x_padding = 100
-
-    const team_1_ids = GetBlueTeamIds({game_data})
-    const team_1_lanes_roles = GetBlueTeamLaneRoles({game_data}, team_1_ids)
-    const team_1_y_values = GetBlueTeamYValuesFromLaneRoles({game_data, barDimensions}, team_1_lanes_roles)
 
     const metrics = team_1_y_values.map( (d,i) => (
         <g transform={`translate(${barDimensions.margins.left},${barDimensions.margins.top})`} key={i}>

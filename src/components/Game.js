@@ -7,14 +7,14 @@ import {LeftBar} from './Bars/LeftBar'
 import {RightBar} from './Bars/RightBar'
 import {BarDimensions} from "./Bars/BarDimensions"
 
-import { GetFramePlayerPosition } from './Data/GetPlayerPos';
+import { GetFramePlayerPosition } from './Data/GetFramePlayerPosition.js';
 import { GetFramePlayerMetrics } from './Data/GetFramePlayerMetrics';
 import {GetNextIndex} from './Data/GetNextIndex'
 import {GetPreviousIndex} from './Data/GetPreviousIndex'
 import {GetGameTime} from './Data/GetGameTime'
 
 
-function Game({game_data, champ_data, item_data}) {
+function Game({game_data, champ_data, item_data, ss_data}) {
     console.log("Game.js is rendering")
 
 
@@ -44,7 +44,7 @@ function Game({game_data, champ_data, item_data}) {
                 <p>Time: {GetGameTime(frame, game_duration, last_frame)} </p>
             </div>
             <div className="topHalf">
-                <LeftBar game_data = {game_data} champ_data={champ_data} item_data={item_data} frame={frame} frame_list={frame_list} barDimensions={BarDimensions()}/>
+                <LeftBar game_data = {game_data} champ_data={champ_data} item_data={item_data} ss_data={ss_data} frame={frame} frame_list={frame_list} barDimensions={BarDimensions()}/>
                 <FrameGraph game_data = {game_data} champ_data={champ_data} frame={frame} frame_list={frame_list} graphDimensions={GraphDimensions()} />
                 <RightBar barDimensions={BarDimensions()}/> 
             </div>

@@ -7,14 +7,11 @@ import { GetBlueTeamLaneRoles } from '../Data/GetBlueTeamLaneRoles'
 import { GetBlueTeamIds } from '../Data/GetBlueTeamIds'
 import { GetBlueTeamYValuesFromLaneRoles } from "../Data/GetBlueTeamYValuesFromLaneRoles" 
 
-function BarPlayerScores({game_data, champ_data, frame, frame_list, barDimensions, xScale, yScale}){
+function BarPlayerScores({game_data, team_1_ids, team_1_lanes_roles, team_1_y_values, frame, barDimensions, xScale, yScale}){
 
     const dim = barDimensions.barPlayerInfoDimensions
-    const team_1_ids = GetBlueTeamIds({game_data})
-    const team_1_lanes_roles = GetBlueTeamLaneRoles({game_data}, team_1_ids)
-    const team_1_y_values = GetBlueTeamYValuesFromLaneRoles({game_data, barDimensions}, team_1_lanes_roles)
 
-    const x_padding = 200
+    const x_padding = 190
     const y_padding = 30.65
 
     function DisplayScore(score){

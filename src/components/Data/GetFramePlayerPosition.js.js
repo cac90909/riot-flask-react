@@ -1,4 +1,4 @@
-function GetFramePlayerPosition({game_data, frame}){
+function GetFramePlayerPosition({game_data}, frame){
 
     var timestamp_data = game_data.Timestamps[frame]
     var frame_pos_data = []

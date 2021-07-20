@@ -32,20 +32,27 @@ function App() {
   const item_url = 'http://ddragon.leagueoflegends.com/cdn/11.14.1/data/en_US/item.json'
   useEffect(() => axios.get(item_url).then(response => setItemData(response.data.data)).then(() => setItemLoading(false)), [])
 
- 
-  if (game_loading || champ_loading || item_loading) {
+  const [ss_data, setSSData] = useState()
+  const [ss_loading, setSSLoading] = useState(true)
+  const ss_url = 'http://ddragon.leagueoflegends.com/cdn/11.14.1/data/en_US/summoner.json'
+  useEffect(() => axios.get(ss_url).then(response => setSSData(response.data.data)).then(() => setSSLoading(false)), [])
+
+  
+
+  if (game_loading || champ_loading || item_loading || ss_loading) {
     return <div className="App">Loading...</div>;
   }
 
   console.log("game_data in App.js (where axios retrieves it):", game_data)
   console.log("champ_data in App.js (where axios retrieves it):", champ_data)
   console.log("item_data in App.js (where axios retrieves it):", item_data)
+  console.log("ss_data in App.js (where axios retrieves it):", ss_data)
   console.log("")
 
   return (
     <div className="App">
       <p>Game: {game_data.Summary.Game.gameId}</p>
-      <Game game_data={game_data} champ_data={champ_data} item_data={item_data}/>
+      <Game game_data={game_data} champ_data={champ_data} item_data={item_data} ss_data={ss_data}/>
     </div>
   );
 }

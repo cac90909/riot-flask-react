@@ -1,18 +1,8 @@
-import * as d3 from 'd3'
-
-import { GetBlueTeamLaneRoles } from '../Data/GetBlueTeamLaneRoles'
-import { GetBlueTeamIds } from '../Data/GetBlueTeamIds'
-import { GetBlueTeamYValuesFromLaneRoles } from "../Data/GetBlueTeamYValuesFromLaneRoles"
-import { GetLaneRoleFromId } from '../Data/GetLaneRoleFromId'
-import { GetTeamFromId } from '../Data/GetTeamFromId'
 import { GetChampImageLinkFromId } from '../Data/GetChampImageLinkFromId'
 import {GetSummonerNameFromId} from '../Data/GetSummonerNameFromId'
 
-function BarPlayerInfo({game_data, champ_data, barDimensions, xScale, yScale}){
+function BarPlayerInfo({game_data, champ_data, barDimensions, team_1_ids, team_1_lanes_roles, team_1_y_values, xScale, yScale}){
 
-    const team_1_ids = GetBlueTeamIds({game_data})
-    const team_1_lanes_roles = GetBlueTeamLaneRoles({game_data}, team_1_ids)
-    const team_1_y_values = GetBlueTeamYValuesFromLaneRoles({game_data, barDimensions}, team_1_lanes_roles)
 
     const dim = barDimensions.barPlayerInfoDimensions
     const text_padding = 10
