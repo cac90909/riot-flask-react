@@ -43,6 +43,7 @@ function BarPlayerInfo({game_data, champ_data, barDimensions, team_ids, team_lan
         > 
         </rect>
         <image 
+        className = "response"
         key = {color + "BlueTeamBarPlayerInfoImage" + team_lanes[i][0] + team_lanes[i][1]}
         href= {GetChampImageLinkFromId({game_data, champ_data}, team_ids[i])}
         width={image_dim} 

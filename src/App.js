@@ -51,7 +51,6 @@ function App() {
 
   return (
     <div className="App">
-      <p>Game: {game_data.Summary.Game.gameId}</p>
       <Game game_data={game_data} champ_data={champ_data} item_data={item_data} ss_data={ss_data}/>
     </div>
   );

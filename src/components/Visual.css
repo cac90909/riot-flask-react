@@ -1,3 +1,8 @@
+.headerGameInfo{
+    margin-top: -5;
+    margin-bottom: -5;
+}
+
 .body {
     font-size: small;
 }
@@ -12,6 +17,16 @@
     flex-direction:row;
     justify-content: space-around;
     flex-wrap: no-wrap;
-    align-items: center
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px
 }
 
+.bottomHalf {
+    display:flex; 
+    flex-direction:row;
+    justify-content: center;
+    flex-wrap: no-wrap;
+    align-items: center;
+    margin-top: 10px;
+}

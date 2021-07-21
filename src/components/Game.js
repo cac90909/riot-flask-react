@@ -7,6 +7,10 @@ import {LeftBar} from './Bars/LeftBar'
 import {RightBar} from './Bars/RightBar'
 import {BarDimensions} from "./Bars/BarDimensions"
 
+import { EventLog } from "./Logs/EventLog"
+import { AnalysisLog } from "./Logs/AnalysisLog"
+import { LogDimensions} from "./Logs/LogDimensions"
+
 import { GetFramePlayerPosition } from './Data/GetFramePlayerPosition.js';
 import { GetFramePlayerMetrics } from './Data/GetFramePlayerMetrics';
 import {GetNextIndex} from './Data/GetNextIndex'
@@ -39,7 +43,8 @@ function Game({game_data, champ_data, item_data, ss_data}) {
     
     return(
         <div>
-            <div className="currentFrame">
+            <div className="headerGameInfo">
+                <p>Game: {game_data.Summary.Game.gameId}</p>
                 <p>Frame: {frame_index + "/" + last_frame_index}</p>
                 <p>Time: {GetGameTime(frame, game_duration, last_frame)} </p>
             </div>
@@ -51,6 +56,10 @@ function Game({game_data, champ_data, item_data, ss_data}) {
             <div className = "Buttons">
                 <button id='prevFrame' onClick={() => changeFrame(GetPreviousIndex({frame, frame_list}))} style={{marginRight : 10}}>&lt;-- Frame</button>
                 <button id='nextFrame' onClick={() => changeFrame(GetNextIndex({frame, frame_list})) } style={{marginLeft : 10}}>Frame --&gt;</button>
+            </div>
+            <div className="bottomHalf">
+                <EventLog game_data={game_data} frame = {frame} frame_list={frame_list} dimensions={LogDimensions()}/>
+                <AnalysisLog game_data={game_data} frame = {frame} frame_list={frame_list} dimensions={LogDimensions()}/>
             </div>
         </div>
     )
