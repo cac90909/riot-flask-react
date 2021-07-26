@@ -27,7 +27,6 @@ function MapCircles({game_data, frame, frame_list, champ_data, graphDimensions, 
                 y={yScale(d.position.y) + (img_border_padding/2)}
                 style={{borderWidth: '5px', borderColor:'red'}}
             />
-            {/*console.log("id:", d.participantId, "pos:", d.position.y)*/}
             <text
                 key={"MapCircleText" + d.participantId}
                 x={xScale(d.position.x)}

@@ -58,8 +58,8 @@ function Game({game_data, champ_data, item_data, ss_data}) {
                 <button id='nextFrame' onClick={() => changeFrame(GetNextIndex({frame, frame_list})) } style={{marginLeft : 10}}>Frame --&gt;</button>
             </div>
             <div className="bottomHalf">
-                <EventLog game_data={game_data} frame = {frame} frame_list={frame_list} dimensions={LogDimensions()}/>
-                <AnalysisLog game_data={game_data} frame = {frame} frame_list={frame_list} dimensions={LogDimensions()}/>
+                <EventLog game_data={game_data} item_data = {item_data} frame = {frame} frame_list={frame_list} dimensions={LogDimensions()}/>
+                <AnalysisLog game_data={game_data} item_data = {item_data} frame = {frame} frame_list={frame_list} dimensions={LogDimensions()}/>
             </div>
         </div>
     )

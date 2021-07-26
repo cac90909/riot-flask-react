@@ -18,7 +18,7 @@ function AnalysisLog({game_data, frame, frame_list, dimensions}){
                             borderWidth:1, borderStyle:'solid', borderColor:'grey', fontSize:16, overflow:'auto',
                             marginLeft: 83, direction:'rtl' }} >
                 <h3>Analysis Log</h3>
-                    <ul>
+                    <ul className='AnalysisLogList'>
                         <li>Hello</li>
                         <li>Hello</li>
                         <li>Hello</li>
