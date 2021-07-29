@@ -48,6 +48,30 @@
     margin-left: -25px;
 }
 
+.EventLogAndFilter{
+    display:flex; 
+    flex-direction:row;
+    justify-content: left;
+}
+
+.EventLogFilterList{
+    list-style-type: none;
+    display:flex; 
+    flex-direction:column;
+    justify-content: space-around;
+}
+
+.AnalysisLogAndFilter{
+    display:flex; 
+    flex-direction:row;
+    justify-content: left;
+}
+
+.EventLogIconFilter{
+    margin-top: 40px;
+    margin-right: 30px;
+}
+
 .BlueTeamEventLogHighlightedWord{
     color: blue
 }
