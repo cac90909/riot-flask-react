@@ -8,6 +8,12 @@ function MapCircles({game_data, frame, frame_list, champ_data, graphDimensions, 
     const img_dim = 20
     const img_border_padding = 2.5
 
+    function RenderTowers(){
+
+        return null
+
+    }
+
     const circles = game_data.Timestamps[frame].map((d,i) =>(
         <g transform={`translate(${graphDimensions.margins.left},${graphDimensions.margins.top})`} key={"MapCirclesAtFrame" + frame + "ForPlayerId" + d.participantId}>
             <rect
@@ -35,6 +41,7 @@ function MapCircles({game_data, frame, frame_list, champ_data, graphDimensions, 
             >
             {"Id:" + d.participantId}
             </text>
+            {RenderTowers()}
         </g>
         )
     )

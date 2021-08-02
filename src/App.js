@@ -24,17 +24,17 @@ function App() {
 
   const [champ_data, setChampData] = useState()
   const [champ_loading, setChampLoading] = useState(true)
-  const champ_url = 'http://ddragon.leagueoflegends.com/cdn/11.13.1/data/en_US/champion.json'
+  const champ_url = 'http://ddragon.leagueoflegends.com/cdn/11.15.1/data/en_US/champion.json'
   useEffect(() => axios.get(champ_url).then(response => setChampData(response.data.data)).then(() => setChampLoading(false)), [])
 
   const [item_data, setItemData] = useState()
   const [item_loading, setItemLoading] = useState(true)
-  const item_url = 'http://ddragon.leagueoflegends.com/cdn/11.14.1/data/en_US/item.json'
+  const item_url = 'http://ddragon.leagueoflegends.com/cdn/11.15.1/data/en_US/item.json'
   useEffect(() => axios.get(item_url).then(response => setItemData(response.data.data)).then(() => setItemLoading(false)), [])
 
   const [ss_data, setSSData] = useState()
   const [ss_loading, setSSLoading] = useState(true)
-  const ss_url = 'http://ddragon.leagueoflegends.com/cdn/11.14.1/data/en_US/summoner.json'
+  const ss_url = 'http://ddragon.leagueoflegends.com/cdn/11.15.1/data/en_US/summoner.json'
   useEffect(() => axios.get(ss_url).then(response => setSSData(response.data.data)).then(() => setSSLoading(false)), [])
 
   
